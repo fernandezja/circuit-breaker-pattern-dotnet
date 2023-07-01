@@ -1,0 +1,72 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Starwars.YodaQuotes",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/yoda/quote": {
+      "get": {
+        "tags": [
+          "Starwars.YodaQuotes"
+        ],
+        "operationId": "GetYodaQuote",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YodaQuote"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/yoda/quote/witherror/each/{attemptIndex}": {
+      "get": {
+        "tags": [
+          "Starwars.YodaQuotes"
+        ],
+        "operationId": "GetYodaQuoteWithError",
+        "parameters": [
+          {
+            "name": "attemptIndex",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "YodaQuote": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
